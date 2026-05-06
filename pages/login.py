@@ -21,9 +21,9 @@ class LoginPage:
     except Exception:
       print("Element not found, probably already accepted cookies")
 
-  def login(self) -> None:
-    self.username_input.fill("Jarasznikos")
-    self.password_input.fill("toechodioler")
+  def login(self, login = "Jarasznikos", password = "toechodioler" ) -> None:
+    self.username_input.fill(login)
+    self.password_input.fill(password)
     self.login_button.click()
 
   def pause(self) -> None:

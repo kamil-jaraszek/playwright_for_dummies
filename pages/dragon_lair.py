@@ -1,5 +1,6 @@
 from playwright.sync_api import Page
 from pages.login import LoginPage
+from playwright.sync_api import Browser
 
 
 class DragonLair(LoginPage):
@@ -11,7 +12,7 @@ class DragonLair(LoginPage):
     page.set_default_navigation_timeout(60_000)
     self.lair_link = page.get_by_role("link", name="Dragon Lair")
     self.first_dragon_thumbnail = page.locator(".lair-page-dragon-thumbnail").first
-    self.switch_familiars_button = page.get_by_role("link", name="Switch familiars")
+    self.switch_familiars_button = page.locator(".dragon-profile-familiar > .common-ui-button-group > a")
     self.familiar_filter_list = page.get_by_label("Bond Status Any Bonded Today")
     self.bond_familiar_button =  page.locator("#dragon-profile-button-bond")
     self.new_first_familiar = page.locator(".itemicon.itemicon-fam-prev").first
@@ -41,3 +42,9 @@ class DragonLair(LoginPage):
 
   def bond_familiar(self) -> None:
     self.bond_familiar_button.click()
+
+  def storage_session(self) -> None:
+    self.page.context.storage_state(path="storage.json")
+
+  def use_storeged_session(self):
+    self.page.new_context(storage_state="state.json")
