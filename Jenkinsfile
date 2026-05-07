@@ -5,14 +5,13 @@ pipeline {
       args '--ipc=host'
     }
   }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'pytest -s'
-      }
-    }
-  }
-}
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
         stage('Install dependencies') {
             steps {
