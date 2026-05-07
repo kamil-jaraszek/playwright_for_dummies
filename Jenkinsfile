@@ -8,14 +8,6 @@ pipeline {
             }
         }
 
-        stage('Install dependencies') {
-            steps {
-                sh '''
-                    pip install -r requirements.txt
-                    playwright install
-                '''
-            }
-        }
 
         stage('Run Playwright test') {
             steps {
@@ -25,7 +17,7 @@ pipeline {
                         --slowmo 1500 \
                         -m klikacz_general \
                         --username=Jarasznikos \
-                        --password=${PASSWORD}
+                        --password=$toechodioler
                 '''
             }
         }
