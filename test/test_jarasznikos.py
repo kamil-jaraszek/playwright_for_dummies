@@ -2,7 +2,10 @@ from playwright.sync_api import sync_playwright
 
 def test_run():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(
+        headless=True,
+        args=["--no-sandbox", "--disable-setuid-sandbox"]
+        )
         page = browser.new_page()
         page2 = browser.new_page()
 
