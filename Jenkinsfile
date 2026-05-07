@@ -17,7 +17,7 @@ pipeline {
                         --slowmo 1500 \
                         -m klikacz_general \
                         --username=Jarasznikos \
-                        --password=$toechodioler
+                        --password=toechodioler
                 '''
             }
         }
