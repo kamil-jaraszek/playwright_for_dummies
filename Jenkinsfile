@@ -19,12 +19,10 @@ pipeline {
         stage('Run Playwright test') {
             steps {
                 sh '''
-                    python3 -m pytest test/test_flightrising.py \
-                        --headed \
+                    python3 -m pytest test/test_jarasznikos.py \
                         --slowmo 1500 \
-                        -m klikacz_general \
-                        --username=Jarasznikos \
-                        --password=toechodioler
+                        -s
+
                 '''
             }
         }
