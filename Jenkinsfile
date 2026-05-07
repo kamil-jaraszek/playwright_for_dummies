@@ -1,5 +1,5 @@
 pipeline {
-  agent {
+    agent {
     docker {
       image 'mcr.microsoft.com/playwright/python:v1.44.0-jammy'
       args '--ipc=host'
