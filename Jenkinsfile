@@ -1,12 +1,18 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+  agent {
+    docker {
+      image 'mcr.microsoft.com/playwright/python:v1.44.0-jammy'
+      args '--ipc=host'
+    }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh 'pytest -s'
+      }
+    }
+  }
+}
 
         stage('Install dependencies') {
             steps {
